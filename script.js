@@ -1,6 +1,10 @@
 $(document).ready(onReady);
 
+let monthlyBudget = '20000.00';
+let EmployeeArray = [];
 
-function onReady() {
-    console.log('In onReady function');
-}
+function onReady() { // Sourced and working
+    
+
+
+} // End onReady
