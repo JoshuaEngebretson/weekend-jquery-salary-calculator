@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Salary Calculator</h1>
+        <h2>Salary Calculator</h2>
     </header>
     <main>
         <h3>Add Employee</h3>
@@ -61,11 +61,18 @@
                         <th class="left">ID</th>
                         <th class="left">Title</th>
                         <th class="left">Annual Salary</th>
-                        <th class="empty-fill"></th> <!-- This line left blank to hold spacing for delete buttons below -->
+                        <th></th> <!-- This line left blank to hold spacing for delete buttons below -->
                     </tr>
                 </thead>
                 <tbody id="Employee-Data">
-                    <tr class="White-background"></tr> <!-- This line left blank to hold spacing for bottom of table aesthetic -->
+                    <tr class="empty">
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                        <td class="empty"></td>
+                    </tr> <!-- This line left blank to hold spacing for bottom of table aesthetic -->
                 </tbody>
             </table>
         </div>
@@ -73,10 +80,14 @@
         <div>
             <h3
             class="right budget">Total Monthly: <span
-                id="monthly-Budget">$20000.00</span>
+                id="monthly-Budget">$20,000.00</span>
             </h3>
         </div>
 
     </main>
+
+    <footer>
+        <h6>Bottom of page</h6>
+    </footer>
 </body>
 </html>

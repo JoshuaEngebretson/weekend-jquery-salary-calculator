@@ -151,7 +151,7 @@ function ShowEmployees() {
                 <td>${employee.lastName}</td>
                 <td>${employee.ID_Number}</td>
                 <td>${employee.jobTitle}</td>
-                <td class="right">${USDollar.format(employee.AnnualSalary)}</td>
+                <td class="right salary">${USDollar.format(employee.AnnualSalary)}</td>
                 <td>
                     <button class="Delete_EmployeeData">Delete</button>
                 </td>
@@ -161,7 +161,14 @@ function ShowEmployees() {
 
     //Intended to add bottom line back in for aesthetics
     EmployeeInfo.append(`
-        <tr class="empty-fill"></tr>
+        <tr class="empty">
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+            <td class="empty"></td>
+        </tr>
     `)
 
 } //End ShowEmployees
@@ -176,8 +183,8 @@ function removeEmployeeInfo(){
     let removedData = (
         Object.values(($(this).parent().parent()).data()).reverse())
     
-    //If there is a comma in removedData for annual salary
-    //  remove the comma
+    //If there is are commas in removedData for annual salary
+    //  remove all the commas
     removedData[4] = String(removedData[4]).replaceAll(',','')
 
     //Remove Employee's data from EmployeeArray and update
