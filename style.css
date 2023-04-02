@@ -43,11 +43,7 @@ main {
     max-width: 80%;
     margin: auto;
 }
-footer {
-    height: 8em;
-    background-color: #7a7a7a;
-    text-align: center;
-}
+
 
 /* Header and Footer styling */
 header, footer {
