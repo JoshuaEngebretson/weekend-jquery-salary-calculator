@@ -178,7 +178,7 @@ function removeEmployeeInfo(){
     
     //If there is a comma in removedData for annual salary
     //  remove the comma
-    removedData[4] = removedData[4].replaceAll(',','')
+    removedData[4] = String(removedData[4]).replaceAll(',','')
 
     //Remove Employee's data from EmployeeArray and update
     //  DOM to reflect budget change.
@@ -187,8 +187,8 @@ function removeEmployeeInfo(){
     for (let i = 0; i < EmployeeArray.length; i++) {
         const element = EmployeeArray[i];
 
-        if (element.firstName === removedData[0] && element.lastName === removedData[1]
-            && element.ID_Number == removedData [2] && element.jobTitle === removedData[3]
+        if (element.firstName == removedData[0] && element.lastName == removedData[1]
+            && element.ID_Number == removedData [2] && element.jobTitle == removedData[3]
             && element.AnnualSalary == removedData[4]) {
 
             EmployeeArray.splice(i, 1);

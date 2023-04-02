@@ -9,20 +9,21 @@ This monthly salary calculator takes in employee information and returns a table
 
 ## Usage
 This calculator starts with a base monthly budget of $20,000.00
+* Note, if the Total Budget exceeds $20,000.00 a visual alert will appear on the user interface. The "Total Monthly" line will turn red \(`#ff0000`)
+
 
 **To add an employee**
 1. Complete the "Add Employee" form at the top by entering
-    *  First name
+    * First name
     * Last name
-    * ID Number
+    * ID Number - Needs to be a number
     * Job title
-    * Annual Salary
-2. Clicking the "Submit" button
+    * Annual Salary - Needs to be a number, leave off Dollar signs (`$`) and/or any commas (`,`)
+2. Click the `[Submit]` button
 
-* Note, if the Total Budget exceeds $20,000.00 a visual alert will appear on the user interface. The "Total Monthly" line will turn red \(`#ff0000`)
 
 **To remove an employee**
-1. Click the "Delete" button on the line that you want to remove.
+1. Click the `[Delete]` button on the line that you want to remove.
     *This will both remove the line and update dollar amount showing in the "Total Monthly" line
 
 
