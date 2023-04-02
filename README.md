@@ -16,9 +16,11 @@ This calculator starts with a base monthly budget of $20,000.00
 1. Complete the "Add Employee" form at the top by entering
     * First name
     * Last name
-    * ID Number - Needs to be a number
+    * ID Number
+        - Needs to be a number
     * Job title
-    * Annual Salary - Needs to be a number, leave off Dollar signs (`$`) and/or any commas (`,`)
+    * Annual Salary
+        - Needs to be a number, leave off Dollar signs (`$`) and/or any commas (`,`)
 2. Click the `[Submit]` button
 
 
