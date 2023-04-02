@@ -31,9 +31,10 @@ function onReady() { //Sourced and working
 
     //Create listener for click event on delete button
     //  Calls on function to remove that line's 
-    //  employee data from the table
-        // Will add functionality to add their salary
-        //  back to the total remaining monthlyBudget
+    //      employee data from the table
+    //  Reruns the MonthlyBudgetRemaining function
+    //      this effectively adds the removed employee's
+    //      salary back into the available pool
     $('#Employee-Data').on('click', 
         '.Delete_EmployeeData', removeEmployeeInfo);
 
@@ -104,17 +105,23 @@ function MonthlyBudgetRemaining() {
     }//End for...of loop
 
     //Create variable to hold data from monthly-sumAll
-    let remainingMonthlyBudget = (monthlyBudget-sumAllSalaries);
+    let remainingMonthlyBudget = (Number(monthlyBudget)-sumAllSalaries);
 
     //Set variable to hold location of id=monthly-budget
     let budgetData = $('#monthly-Budget');
     //Confirm the location is emptied out
     budgetData.empty();
 
-    //If total sumAllSalaries is  than $20000
+    //If total sumAllSalaries is greater than $20000
     //  set background-color to red
     if (sumAllSalaries > 20000) {
         $('.budget').css('background-color', '#FF0000')
+    }
+
+    //If total sumAllSalaries is less than $20000
+    //  set background-color to default
+    if (sumAllSalaries <= 20000) {
+        $('.budget').css('background-color', '')
     }
 
     //Update location with remainingMonthlyBudget.
@@ -134,7 +141,7 @@ function ShowEmployees() {
     EmployeeInfo.empty();
 
     //Loop through EmployeesArray, create a new line
-    //  with each employees data
+    //  with each employee's data.
     //Creates a delete button after each employees data.
     for (const employee of EmployeeArray) {
         EmployeeInfo.append(`
@@ -165,36 +172,70 @@ function ShowEmployees() {
 
 function removeEmployeeInfo(){
 
-    console.log('in removeEmployeeInfo');
+    //Grab data from what was just deleted.
+    //  Target this, then go up 2 levels, reorder to match
+    //      order of array we will be comparing to
+    //  Create a new variable set the that value.
+    let removedData = (
+        Object.values(($(this).parent().parent()).data()).reverse())
+    
+    //If there is a comma in removedData for annual salary
+    //  remove the comma
+    removedData[4] = removedData[4].replaceAll(',','')
 
-    // Target this, then go up 2 levels and delete
-    //  the whole row worth of this employee's data.
-
-
-    // Grab data from what was just deleted.
-    let removedData = (Object.values(($(this).parent().parent()).data()).reverse())
 
     let removedEl;
-
     //Remove Employee's data from EmployeeArray and update
     //  DOM to reflect budget change.
     //Use for...of loop to cycle through array and remove employee
     //  data that matches removedData (removed employee).
-    for (const employee of EmployeeArray) {
-        if (employee.firstName == removedData[0] && employee.lastName == removedData[1]
-            && employee.ID_Number == removedData [2] && employee.jobTitle == removedData [3]
-            && employee.AnnualSalary == removedData[4]) {
-            EmployeeArray.splice(employee, 1);
-            console.log('splicing');
-            console.log(removedEl);
+    for (let i = 0; i < EmployeeArray.length; i++) {
+        const element = EmployeeArray[i];
+        console.log(`inside for loop within removeEmployeeInfo.
+            \niteration count --->${i+1}`);
+        // console.log(`EmployeeArray 👇`); /* console log for testing purposes */
+        // console.log(EmployeeArray); /* console log for testing purposes */
+        
+        // console.log(`EmployeeArray${i} 👇`); /* console log for testing purposes */
+        // console.log(element); /* console log for testing purposes */
+        // console.log(`${element.firstName}, ${element.lastName}, 
+        //    ${element.ID_Number}, ${element.jobTitle},
+        //    ${element.AnnualSalary}`); /* console log for testing purposes */
+
+        // console.log(`removedData 👇`); /* console log for testing purposes */
+        // console.log(removedData); /* console log for testing purposes */
+
+        if (element.firstName === removedData[0] && element.lastName === removedData[1]
+            && element.ID_Number == removedData [2] && element.jobTitle === removedData[3]
+            && element.AnnualSalary == removedData[4]) {
+
+            removedEl = EmployeeArray.splice(i, 1); /* variable set for testing purposes */
+            // EmployeeArray.splice(i, 1);
+
+            console.log('splicing'); /* console log for testing purposes */
+            console.log(`EmployeeArray 👇 AFTER splice`); /* console log for testing purposes */
+            console.log(EmployeeArray); /* console log for testing purposes */
             break
         }
-    } //End for...of
 
-    console.log(removedData);
-    console.log(EmployeeArray);
+        // console.log(`no match at i=${i}`); /* console log for testing purposes */
 
+    } // End for loop
+
+    console.log(`removedEl 👇`); /* console log for testing purposes */
+    console.log(removedEl); /* console log for testing purposes */
+
+    console.log(`removedData 👇`); /* console log for testing purposes */
+    console.log(removedData); /* console log for testing purposes */
+
+    console.log(`EmployeeArray 👇`); /* console log for testing purposes */
+    console.log(EmployeeArray); /* console log for testing purposes */
+
+    //Update Total Monthly Budget based on updated EmployeeArray
+    //  Updated EmployeeArray no longer includes removed employee
     MonthlyBudgetRemaining()
+
+    //Update the DOM to remove the employee from the table
     $(this).parent().parent().remove();
 
 } //End removeEmployeeInfo

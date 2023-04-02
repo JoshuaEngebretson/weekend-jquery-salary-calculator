@@ -19,10 +19,11 @@ This calculator starts with a base monthly budget of $20,000.00
     * Annual Salary
 2. Clicking the "Submit" button
 
-* Note, if the Total Budget exceeds $20,000.00 a visual alert will appear on the user interface. The "Total Monthly" line will turn red \(`#FF0000`)
+* Note, if the Total Budget exceeds $20,000.00 a visual alert will appear on the user interface. The "Total Monthly" line will turn red \(`#ff0000`)
 
 **To remove an employee**
 1. Click the "Delete" button on the line that you want to remove.
+    *This will both remove the line and update dollar amount showing in the "Total Monthly" line
 
 
 ## Built With
@@ -35,6 +36,7 @@ To Matt Black and Andrew Harasymiw,
 
 To my partner Brooke,
 * Thank you for supporting me through this programming journey. I would not be able to make this work without you.
+
 
 ## Support
 If you have suggestions or issues, please email me [here](mailto:joshua.engebretson@gmail.com).
