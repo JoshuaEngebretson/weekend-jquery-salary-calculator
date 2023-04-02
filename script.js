@@ -4,7 +4,6 @@ $(document).ready(onReady);
 //Global Variables
 let monthlyBudget = '20000.00';
 let EmployeeArray = [];
-let EmployeeData_Array =[];
 
 
 //Setting Global Variable that converts a given number
@@ -38,7 +37,6 @@ function onReady() { //Sourced and working
     $('#Employee-Data').on('click', 
         '.Delete_EmployeeData', removeEmployeeInfo);
 
-
 } //End onReady
 
 
@@ -71,7 +69,6 @@ function appendEmployeeInfo(event) {
         //Store nextEmployee data in EmployeeArray to later
         //  call upon and place inside of table on DOM
         EmployeeArray.push(nextEmployee);
-        EmployeeData_Array.push(Object.values(nextEmployee))
 
         //Reset input fields on form to placeholder text
         $('#first-Name').val('');
@@ -183,53 +180,23 @@ function removeEmployeeInfo(){
     //  remove the comma
     removedData[4] = removedData[4].replaceAll(',','')
 
-
-    let removedEl;
     //Remove Employee's data from EmployeeArray and update
     //  DOM to reflect budget change.
     //Use for...of loop to cycle through array and remove employee
     //  data that matches removedData (removed employee).
     for (let i = 0; i < EmployeeArray.length; i++) {
         const element = EmployeeArray[i];
-        console.log(`inside for loop within removeEmployeeInfo.
-            \niteration count --->${i+1}`);
-        // console.log(`EmployeeArray 👇`); /* console log for testing purposes */
-        // console.log(EmployeeArray); /* console log for testing purposes */
-        
-        // console.log(`EmployeeArray${i} 👇`); /* console log for testing purposes */
-        // console.log(element); /* console log for testing purposes */
-        // console.log(`${element.firstName}, ${element.lastName}, 
-        //    ${element.ID_Number}, ${element.jobTitle},
-        //    ${element.AnnualSalary}`); /* console log for testing purposes */
-
-        // console.log(`removedData 👇`); /* console log for testing purposes */
-        // console.log(removedData); /* console log for testing purposes */
 
         if (element.firstName === removedData[0] && element.lastName === removedData[1]
             && element.ID_Number == removedData [2] && element.jobTitle === removedData[3]
             && element.AnnualSalary == removedData[4]) {
 
-            removedEl = EmployeeArray.splice(i, 1); /* variable set for testing purposes */
-            // EmployeeArray.splice(i, 1);
+            EmployeeArray.splice(i, 1);
 
-            console.log('splicing'); /* console log for testing purposes */
-            console.log(`EmployeeArray 👇 AFTER splice`); /* console log for testing purposes */
-            console.log(EmployeeArray); /* console log for testing purposes */
             break
         }
 
-        // console.log(`no match at i=${i}`); /* console log for testing purposes */
-
     } // End for loop
-
-    console.log(`removedEl 👇`); /* console log for testing purposes */
-    console.log(removedEl); /* console log for testing purposes */
-
-    console.log(`removedData 👇`); /* console log for testing purposes */
-    console.log(removedData); /* console log for testing purposes */
-
-    console.log(`EmployeeArray 👇`); /* console log for testing purposes */
-    console.log(EmployeeArray); /* console log for testing purposes */
 
     //Update Total Monthly Budget based on updated EmployeeArray
     //  Updated EmployeeArray no longer includes removed employee
