@@ -2,7 +2,7 @@
 $(document).ready(onReady);
 
 //Global Variables
-let monthlyBudget = '20000.00';
+let monthlyBudget = '0.00';
 let EmployeeArray = [];
 
 
@@ -101,30 +101,31 @@ function MonthlyBudgetRemaining() {
         sumAllSalaries += employee.AnnualSalary;
     }//End for...of loop
 
-    //Create variable to hold data from monthly-sumAll
-    let remainingMonthlyBudget = (Number(monthlyBudget)-sumAllSalaries);
+    //Create variable to hold data from monthlyBudget - sumAllSalaries
+    //  divided by 12 (months in the year)
+    let TotalMonthlyBudget = (sumAllSalaries/12);
 
     //Set variable to hold location of id=monthly-budget
     let budgetData = $('#monthly-Budget');
     //Confirm the location is emptied out
     budgetData.empty();
 
-    //If total sumAllSalaries is greater than $20000
+    //If TotalMonthlyBudget is greater than $20000
     //  set background-color to red
-    if (sumAllSalaries > 20000) {
+    if (TotalMonthlyBudget > 20000) {
         $('.budget').css('background-color', '#FF0000')
     }
 
-    //If total sumAllSalaries is less than $20000
+    //If remainingMonthlyBudget is less than or equal to $20000
     //  set background-color to default
-    if (sumAllSalaries <= 20000) {
+    if (TotalMonthlyBudget <= 20000) {
         $('.budget').css('background-color', '')
     }
 
     //Update location with remainingMonthlyBudget.
     //  toFixed is used to convert to string with
     //  2 decimal places.
-    budgetData.append(USDollar.format(remainingMonthlyBudget))
+    budgetData.append(USDollar.format(TotalMonthlyBudget))
 
 } //End MonthlyBudgetRemaining
 
